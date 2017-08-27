@@ -54,7 +54,7 @@ public class Pattern_matching {
         System.out.println("function count is :"+func_count1);
         
         Scanner scan2 = new Scanner(f);
-        Pattern calls = Pattern.compile("\\w+\\(.*\\)\\;");
+        Pattern calls = Pattern.compile("(public|private|protected){0}\\s*(static){0}\\s*(void|int|float){0}\\w+\\(.*\\)\\;");
         int call_count=0;
         while(scan2.hasNextLine())
         {
@@ -70,9 +70,23 @@ public class Pattern_matching {
         System.out.println("Number of System calls :"+call_count);
         
         Scanner scan3 = new Scanner(f);
+        Pattern cases = Pattern.compile("(case).*\\:");
+        int case_count = 0;
+        while(scan3.hasNextLine())
+        {
+            String l2 = scan3.nextLine();
+            Matcher m3 = cases.matcher(l2);
+            boolean b3 = m3.matches();
+            if(b3==true)
+            {
+                case_count++;
+                
+        }
         
         
         // TODO code application logic here
     }
     
+        System.out.println("Number of swutch Cases :"+case_count);
+}
 }
